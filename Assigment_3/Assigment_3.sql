@@ -1,0 +1,76 @@
+-- # TASK 3 # -- 
+
+-- USE INVENTORY    
+
+CREATE PROCEDURE ADDSUPPLIER @ID AS CHAR(5), @NAME AS VARCHAR(30), 
+                             @ADDR AS VARCHAR(60), @CITY AS VARCHAR(30), 
+                             @PHONE AS VARCHAR(14), @EMAIL AS VARCHAR(60)
+AS 
+BEGIN
+    INSERT INTO SUPPLIER VALUES (
+        @ID, @NAME, @ADDR, @CITY, @PHONE, @EMAIL
+    );
+
+    -- AUTOMATICALLY DISPLAY THE SUPPLIER ADDED
+    SELECT * FROM SUPPIER 
+    WHERE SID = @ID;
+END;
+
+--CHECKING THE CREATED PROCEDURES 
+ADDSUPPLIER 'S0001', 'Logicowise System', 'B208, Laxmitara Market, Dange Chowk, Thergaon-411033', 
+            'PUNE', '7448080044', 'logicowise@gmail.com'
+
+----------------------------------------------------
+
+CREATE PROCEDURE ADDPRODUCT @ID AS CHAR(5), @DESC VARCHAR(60), 
+                            @PRICE AS INT, @CAT AS VARCHAR(30),
+                            @SID AS CHAR(5)
+AS 
+BEGIN
+    INSERT INTO PRODUCT VALUES 
+    (
+        @ID, @DESC, @PRICE, @CAT, @SID
+    );
+
+    -- AUTOMATICALLY DISPLAY WHEN PRODUCT ADDED
+    SELECT * FROM PRODUCT
+    WHERE PID = @ID;
+END;
+
+
+
+-- CHECKING THE CREATED PROCEDURES
+ADDPRODUCT 'P0001', 'SAMSUNG BOOK 4 PRO', 100000, 'ELECTRONICS', 'S0001';
+
+----------------------------------------------------
+
+CREATE PROCEDURE ADDCUST @ID AS CHAR(5), @NAME AS VARCHAR(30), @ADDR AS VARCHAR(70),
+                         @CITY AS VARCHAR(30), @PHONE AS VARCHAR(14), @DOB AS DATE
+AS
+BEGIN 
+    INSERT INTO CUSTOMER VALUES (
+        @ID, @NAME, @ADDR, @CITY, @PHONE, @DOB
+    );
+
+-- AUTOMATICALLY DISPLAY THE CUSTOMER ADDED 
+ADDCUST 'C0001', 'MUSTAKIM', 'NO.14/11, MASHALLAH KHIJADA STREET, PUNE', '9876543210', '25-04-1996';
+
+
+
+----------------------------------------------------
+CREATE PROCEDURE ADDORDER @ID AS CHAR(5), @DATE AS DATE, @CID AS CHAR(5), 
+                          @PID AS CHAR(5), @QTY AS INT
+AS
+BEGIN
+    INSERT INTO ORDERS VALUES (
+        @ID, @DATE, @CID, @PID, @QTY
+    );
+
+    --AUTOMATICALLY DISPLAY ADDED ORDERS
+    SELECT * FROM ORDERS
+    WHERE OID = @ID;
+END;
+
+-- CHECKING THE CREATED PROCEDURE 
+ADDORDER 'O0001', '23-10-2025', 'C0001', 'P0001', 1;
+
