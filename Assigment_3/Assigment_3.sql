@@ -12,7 +12,7 @@ BEGIN
     );
 
     -- AUTOMATICALLY DISPLAY THE SUPPLIER ADDED
-    SELECT * FROM SUPPIER 
+    SELECT * FROM SUPPLIER 
     WHERE SID = @ID;
 END;
 
@@ -58,6 +58,7 @@ ADDCUST 'C0001', 'MUSTAKIM', 'NO.14/11, MASHALLAH KHIJADA STREET, PUNE', '987654
 
 
 ----------------------------------------------------
+
 CREATE PROCEDURE ADDORDER @ID AS CHAR(5), @DATE AS DATE, @CID AS CHAR(5), 
                           @PID AS CHAR(5), @QTY AS INT
 AS
